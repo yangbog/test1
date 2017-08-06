@@ -1,0 +1,22 @@
+low = byte[0];  high = byte[1];
+
+F E D C B A 9 8 7 6 5 4 3 2 1 0
+--------------- ---------------
+     byte[0]         byte[1]
+
+비트 순서
+             --low byte[0]--|--high byte[1]-
+x86 uint16 = F E D C B A 9 8 7 6 5 4 3 2 1 0
+             ---day--- --mon-- -----year----
+             ---sec--- ----min---- --hour---
+
+일 = uint16 >> 3
+월 = uint16 &
+
+일 = byte[0] >> 3
+월 = ((byte[0] << 1) | (byte[1] >> 7)) & 0x0F
+연 = byte[1] >> 1 + 1980
+
+초 = byte[0] >> 3
+분 = byte[1] 
+시 =
